@@ -19,11 +19,15 @@ import * as math from 'lib0/math'
  */
 export const defaultCursorBuilder = (user) => {
   const cursor = document.createElement('span')
+  cursor.classList.add('ProseMirror-yjs-cursor-scribblychat')           // add fake class so that we can remove it from content
   cursor.classList.add('ProseMirror-yjs-cursor')
   cursor.setAttribute('style', `border-color: ${user.color}`)
+  
   const userDiv = document.createElement('div')
+  userDiv.classList.add('ProseMirror-yjs-cursor-scribblychat')            // add fake class so that we can remove it from content
   userDiv.setAttribute('style', `background-color: ${user.color}`)
   userDiv.insertBefore(document.createTextNode(user.name), null)
+  
   const nonbreakingSpace1 = document.createTextNode('\u2060')
   const nonbreakingSpace2 = document.createTextNode('\u2060')
   cursor.insertBefore(nonbreakingSpace1, null)
